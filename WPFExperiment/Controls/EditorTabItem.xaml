@@ -1,0 +1,21 @@
+﻿<TabItem x:Class="WPFExperiment.Controls.EditorTabItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Name="DockPanelProfile" HorizontalAlignment="Left" Grid.Column="0">
+            <Button Name="ButtonAddConfiguration" Style="{StaticResource EditorButton}">+</Button>
+        </DockPanel>
+        <GridSplitter></GridSplitter>
+        <StackPanel Name="StackPanelProperties" Orientation="Vertical" Width="200" Grid.Column="1">
+            <TextBox>This Section will display configuration or profile properties</TextBox>
+        </StackPanel>
+    </Grid>
+</TabItem>
