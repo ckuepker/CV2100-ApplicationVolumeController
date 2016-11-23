@@ -11,17 +11,16 @@
                 <Style.Setters>
                     <Setter Property="Button.Padding" Value="10"></Setter>
                     <Setter Property="Button.Margin" Value="3"></Setter>
-                    <Setter Property="Button.Opacity" Value="0.5"></Setter>
                 </Style.Setters>
-                
-                <Style.Triggers>
-                    <Trigger Property="Button.IsMouseOver" Value="true">
-                        <Setter Property="Button.Opacity" Value="1.0"></Setter>
-                    </Trigger>
-                </Style.Triggers>
             </Style>
             <Style x:Key="DockPanelEditor">
                 <Setter Property="DockPanel.Background" Value="Black"></Setter>
+            </Style>
+            <Style x:Key="EditorButton">
+                <Setter Property="Button.Margin" Value="15"></Setter>
+                <Setter Property="Button.Padding" Value="50"></Setter>
+                <Setter Property="Button.HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Button.VerticalAlignment" Value="Center"></Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

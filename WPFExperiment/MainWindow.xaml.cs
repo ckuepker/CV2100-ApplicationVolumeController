@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFExperiment.OM;
+using WPFExperiment.Controls;
 
 namespace WPFExperiment
 {
@@ -21,6 +23,9 @@ namespace WPFExperiment
     public partial class MainWindow : Window
     {
         #region fields
+
+        private List<TabItem> tabs;
+
         #endregion
 
         #region constructors
@@ -29,6 +34,8 @@ namespace WPFExperiment
         {
             InitializeComponent();
             this.InitializeCommandBindings();
+            this.tabs = new List<TabItem>();
+            TabControlEditor.DataContext = tabs;
         }
 
         #endregion
@@ -36,8 +43,17 @@ namespace WPFExperiment
         #region event handlers
         public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            txtWelcome.Visibility = Visibility.Collapsed;
-            DockPanelConfigurations.Visibility = Visibility.Visible;
+            Profile p = new Profile("Profile#"+tabs.Count);
+            EditorTabItem editingTab = new EditorTabItem(p);
+            tabs.Add(editingTab);
+            if (tabs.Count == 1)
+            {
+                txtWelcome.Visibility = Visibility.Collapsed;
+                TabControlEditor.Visibility = Visibility.Visible;
+            }
+            //editingTab.Focus();
+            //editingTab.UpdateLayout();
+            TabControlEditor.SelectedIndex = tabs.Count - 1;
         }
         #endregion
 

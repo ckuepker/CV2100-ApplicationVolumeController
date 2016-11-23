@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using WPFExperiment.OM;
 
 namespace WPFExperiment
 {
@@ -13,5 +15,11 @@ namespace WPFExperiment
     /// </summary>
     public partial class App : Application
     {
+
+
+        public App()
+        {
+        }
+
     }
 }

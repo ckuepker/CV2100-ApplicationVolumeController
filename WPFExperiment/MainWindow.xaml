@@ -16,6 +16,7 @@
             </Menu>
         </StackPanel>
         <WrapPanel Orientation="Horizontal" Name="WrapPanelToolbar">
+            <Button Name="ToolbarButtonNew" Content="New" Command="New" Style="{StaticResource ToolbarButton}"></Button>
             <Button Name="ToolbarButtonAdd" Content="Add" Style="{StaticResource ToolbarButton}" Visibility="Collapsed"></Button>
             <Button Name="ToolbarButtonExit" Content="Exit" Command="cmd:ApplicationCommands.Exit" Style="{StaticResource ToolbarButton}"></Button>
         </WrapPanel>
@@ -27,7 +28,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBox Name="txtWelcome" Text="Welcome"></TextBox>
-            <DockPanel Name="DockPanelConfigurations" Visibility="Collapsed" Style="{StaticResource DockPanelEditor}"></DockPanel>
+            <TabControl Name="TabControlEditor" Visibility="Collapsed" ItemsSource="{Binding}"></TabControl>
         </Grid>
     </StackPanel>
 </Window>
