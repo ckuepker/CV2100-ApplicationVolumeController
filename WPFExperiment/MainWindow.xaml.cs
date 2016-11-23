@@ -20,24 +20,43 @@ namespace WPFExperiment
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region fields
+        #endregion
+
+        #region constructors
+
         public MainWindow()
         {
             InitializeComponent();
-           
+            this.InitializeCommandBindings();
         }
 
-        private void click(object sender, RoutedEventArgs e)
+        #endregion
+
+        #region event handlers
+        public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show(String.Format("{0}", input.Text));
+            txtWelcome.Visibility = Visibility.Collapsed;
+            DockPanelConfigurations.Visibility = Visibility.Visible;
         }
+        #endregion
+
+        #region private methods
+        private void InitializeCommandBindings()
+        {
+            CommandBinding binding = new CommandBinding(ApplicationCommands.New);
+            binding.Executed += NewCommand_Executed;
+            this.CommandBindings.Add(binding);
+        }
+        #endregion
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("New File");
-        }
-
-        private void RowDefinition_IsKeyboardFocusWithinChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
+            MessageBoxResult result = MessageBox.Show("Exit application?", "Confirmation", MessageBoxButton.OKCancel);
+            if (MessageBoxResult.OK.Equals(result))
+            {
+                Application.Current.Shutdown();
+            }
 
         }
     }

@@ -1,58 +1,33 @@
 ﻿<Window x:Class="WPFExperiment.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:person="clr-namespace:WPFExperiment.Data;assembly=Person"
-        Title="WPFExperiment">
+        xmlns:cmd="clr-namespace:WPFExperiment.Commands"
+        Title="WPFE MainWindow">
     <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_Executed"></CommandBinding>
+        <CommandBinding Command="cmd:ApplicationCommands.Exit" Executed="CommandBinding_Executed"></CommandBinding>
     </Window.CommandBindings>
-    <Grid x:Name="grid1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <TabControl Name="WPFETabControlMain" Grid.Row="1">
-            <TabItem Name="WPFETabItemStart" Width="auto" Header="Start">
-                <Grid Name="WPFEGridStartMain">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-                    <TextBox Name="input" Margin="15" Grid.Row="1">
-                        Lorem ipsum
-                    </TextBox>
-                </Grid>
-            </TabItem>
-            <TabItem Name="WPFETabItemView" Width="auto" Header="View">
-                <Grid Name="GridViewMain">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Button Grid.Row="0"  Button.Click="click" Margin="15" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        Start
-                    </Button>
-                    <DataGrid Grid.Row="1">
-                        
-                    </DataGrid>
-                </Grid>
-
-            </TabItem>
-        </TabControl>
-        <Menu HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Top" >
-            <MenuItem Header="File">
-                <MenuItem Command="ApplicationCommands.New"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Edit"></MenuItem>
-            <MenuItem Header="View"></MenuItem>
-            <MenuItem Header="Tools"></MenuItem>
-            <MenuItem Header="Help"></MenuItem>
-        </Menu>
-
-
-    </Grid>
+    <StackPanel Name="StackPanelMain" Orientation="Vertical">
+        <StackPanel Name="StackPanelMenu" Orientation="Horizontal">
+            <Menu Name="MenuMain" Height="auto">
+                <MenuItem Name="MenuItemFile" Header="File">
+                    <MenuItem Name="MenuItemFileNew" Header="New Configuration" Command="New"></MenuItem>
+                    <MenuItem Name="MenuItemExit" Header="Exit" Command="cmd:ApplicationCommands.Exit"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <WrapPanel Orientation="Horizontal" Name="WrapPanelToolbar">
+            <Button Name="ToolbarButtonAdd" Content="Add" Style="{StaticResource ToolbarButton}" Visibility="Collapsed"></Button>
+            <Button Name="ToolbarButtonExit" Content="Exit" Command="cmd:ApplicationCommands.Exit" Style="{StaticResource ToolbarButton}"></Button>
+        </WrapPanel>
+        <Grid Name="EditorGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtWelcome" Text="Welcome"></TextBox>
+            <DockPanel Name="DockPanelConfigurations" Visibility="Collapsed" Style="{StaticResource DockPanelEditor}"></DockPanel>
+        </Grid>
+    </StackPanel>
 </Window>
