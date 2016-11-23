@@ -8,14 +8,14 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200" MinWidth="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Name="DockPanelProfile" HorizontalAlignment="Left" Grid.Column="0">
             <Button Name="ButtonAddConfiguration" Style="{StaticResource EditorButton}">+</Button>
         </DockPanel>
-        <GridSplitter></GridSplitter>
-        <StackPanel Name="StackPanelProperties" Orientation="Vertical" Width="200" Grid.Column="1">
-            <TextBox>This Section will display configuration or profile properties</TextBox>
+        <GridSplitter Grid.Column="0" Grid.RowSpan="1" ResizeDirection="Columns" Width="5"></GridSplitter>
+        <StackPanel Name="StackPanelProperties" Orientation="Vertical" Grid.Column="1">
+            <TextBox TextWrapping="Wrap">This Section will display configuration or profile properties</TextBox>
         </StackPanel>
     </Grid>
 </TabItem>
