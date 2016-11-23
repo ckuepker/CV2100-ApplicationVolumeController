@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFExperiment.OM;
 using WPFExperiment.Controls;
+using System.Collections.ObjectModel;
 
 namespace WPFExperiment
 {
@@ -24,7 +25,7 @@ namespace WPFExperiment
     {
         #region fields
 
-        private List<TabItem> tabs;
+        private ObservableCollection<TabItem> tabs;
 
         #endregion
 
@@ -34,7 +35,7 @@ namespace WPFExperiment
         {
             InitializeComponent();
             this.InitializeCommandBindings();
-            this.tabs = new List<TabItem>();
+            this.tabs = new ObservableCollection<TabItem>();
             TabControlEditor.DataContext = tabs;
         }
 
@@ -43,7 +44,7 @@ namespace WPFExperiment
         #region event handlers
         public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Profile p = new Profile("Profile#"+tabs.Count);
+            Profile p = new Profile("Profile#" + tabs.Count);
             EditorTabItem editingTab = new EditorTabItem(p);
             tabs.Add(editingTab);
             if (tabs.Count == 1)
@@ -51,9 +52,17 @@ namespace WPFExperiment
                 txtWelcome.Visibility = Visibility.Collapsed;
                 TabControlEditor.Visibility = Visibility.Visible;
             }
-            //editingTab.Focus();
-            //editingTab.UpdateLayout();
             TabControlEditor.SelectedIndex = tabs.Count - 1;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Exit application?", "Confirmation", MessageBoxButton.OKCancel);
+            if (MessageBoxResult.OK.Equals(result))
+            {
+                Application.Current.Shutdown();
+            }
+
         }
         #endregion
 
@@ -66,14 +75,6 @@ namespace WPFExperiment
         }
         #endregion
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Exit application?", "Confirmation", MessageBoxButton.OKCancel);
-            if (MessageBoxResult.OK.Equals(result))
-            {
-                Application.Current.Shutdown();
-            }
 
-        }
     }
 }
