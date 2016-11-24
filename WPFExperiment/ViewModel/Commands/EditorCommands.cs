@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFExperiment.Commands
+namespace WPFExperiment.ViewModel.Commands
 {
     public class EditorCommands
     {

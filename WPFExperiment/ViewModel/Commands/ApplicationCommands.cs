@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WPFExperiment.Commands
+namespace WPFExperiment.ViewModel.Commands
 {
     public class ApplicationCommands
     {

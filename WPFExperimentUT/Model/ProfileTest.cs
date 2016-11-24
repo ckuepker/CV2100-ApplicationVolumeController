@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using WPFExperiment.OM;
+using WPFExperiment.Model;
 using NUnit.Framework;
 
-namespace WPFExperimentUT.OM
+namespace WPFExperimentUT.Model
 {
     /// <summary>
     /// Summary description for ProfileTest

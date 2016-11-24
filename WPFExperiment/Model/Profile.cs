@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPFExperiment.OM
+namespace WPFExperiment.Model
 {
     public class Profile : INotifyPropertyChanged
     {

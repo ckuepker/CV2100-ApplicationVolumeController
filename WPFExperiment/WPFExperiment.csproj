@@ -53,7 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\EditorTabItem.xaml">
+    <Page Include="View\Controls\EditorTabItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -65,9 +65,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\ApplicationCommands.cs" />
-    <Compile Include="Commands\EditorCommands.cs" />
-    <Compile Include="Controls\EditorTabItem.xaml.cs">
+    <Compile Include="ViewModel\Commands\ApplicationCommands.cs" />
+    <Compile Include="ViewModel\Commands\EditorCommands.cs" />
+    <Compile Include="View\Controls\EditorTabItem.xaml.cs">
       <DependentUpon>EditorTabItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -76,8 +76,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OM\Configuration.cs" />
-    <Compile Include="OM\Profile.cs" />
+    <Compile Include="Model\Configuration.cs" />
+    <Compile Include="Model\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

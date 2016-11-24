@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFExperiment.OM;
+using WPFExperiment.Model;
 
-namespace WPFExperiment.Controls
+namespace WPFExperiment.View.Controls
 {
     /// <summary>
     /// Interaction logic for EditorTab.xaml

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WPFExperiment.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:cmd="clr-namespace:WPFExperiment.Commands"
+        xmlns:cmd="clr-namespace:WPFExperiment.ViewModel.Commands"
         Title="WPFE MainWindow">
     <Window.CommandBindings>
         <CommandBinding Command="cmd:ApplicationCommands.Exit" Executed="CommandBinding_Executed"></CommandBinding>
