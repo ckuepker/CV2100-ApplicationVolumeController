@@ -45,6 +45,8 @@ namespace WPFExperiment
         public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Profile p = new Profile("Profile#" + tabs.Count);
+            p.Add(new Configuration("Config1"));
+            p.Add(new Configuration("Config2"));
             EditorTabItem editingTab = new EditorTabItem(p);
             tabs.Add(editingTab);
             if (tabs.Count == 1)

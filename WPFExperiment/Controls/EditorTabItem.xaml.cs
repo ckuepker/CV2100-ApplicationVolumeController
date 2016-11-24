@@ -21,10 +21,30 @@ namespace WPFExperiment.Controls
     /// </summary>
     public partial class EditorTabItem : TabItem
     {
+
+        #region fields
+
+        private Profile profile;
+
+        #endregion
+
+        #region properties
+
+        public Profile Profile
+        {
+            get { return profile; }
+            set { profile = value; }
+        }
+
+        #endregion
+
+
         public EditorTabItem(Profile p)
         {
             InitializeComponent();
             this.Header = p.Name;
+            this.profile = p;
+            lstConfigurations.ItemsSource = p.Configurations;
         }
     }
 }

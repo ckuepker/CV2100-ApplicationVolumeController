@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WPFExperiment.OM
 {
-    public class Profile
+    public class Profile : INotifyPropertyChanged
     {
         private string _name;
         private List<Configuration> _configurations;
@@ -20,6 +21,11 @@ namespace WPFExperiment.OM
         public string Name
         {
             get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Name"));
+            }
         }
 
         public List<Configuration> Configurations
@@ -31,5 +37,18 @@ namespace WPFExperiment.OM
         {
             this._configurations.Add(c);
         }
+
+        #region events
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, e);
+            }
+        }
+
+        #endregion
     }
 }
