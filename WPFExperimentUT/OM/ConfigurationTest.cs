@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WPFExperiment.OM;
+using NUnit.Framework;
 
 namespace WPFExperimentUT.OM
 {
     /// <summary>
     /// Summary description for UnitTest1
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ConfigurationTest
     {
 
@@ -37,23 +37,23 @@ namespace WPFExperimentUT.OM
         //
         #endregion
 
-        [TestInitialize()]
+        [SetUp]
         public void setup()
         {
             this.cut = new Configuration("Configuration1");
         }
 
-        [TestMethod]
+        [Test]
         public void TestVolume()
         {
             this.cut.Add("Teamspeak", 0.13m);
-            Assert.AreEqual(this.cut.GetVolume("Teamspeak"), 0.13m);
+            Assert.That(this.cut.GetVolume("Teamspeak"), Is.EqualTo(0.13m));
         }
 
-        [TestMethod]
+        [Test]
         public void TestName()
         {
-            Assert.AreEqual("Configuration1", this.cut.Name);
+            Assert.That(this.cut.Name, Is.EqualTo("Configuration1"));
         }
     }
 }

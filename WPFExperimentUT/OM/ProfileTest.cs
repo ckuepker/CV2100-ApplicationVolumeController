@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WPFExperiment.OM;
+using NUnit.Framework;
 
 namespace WPFExperimentUT.OM
 {
     /// <summary>
     /// Summary description for ProfileTest
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class ProfileTest
     {
 
-        private Profile _cut;
+        private Profile profile;
         public ProfileTest()
         {
             
         }
 
-        [TestInitialize]
+        [SetUp]
         public void setup()
         {
-            this._cut = new Profile("DefaultProfile");
+            this.profile = new Profile("DefaultProfile");
         }
 
 
@@ -48,17 +48,17 @@ namespace WPFExperimentUT.OM
         //
         #endregion
 
-        [TestMethod]
+        [Test]
         public void testAdd()
         {
-            this._cut.Add(new Configuration("Configuration1"));
-            Assert.AreEqual(this._cut.Configurations.Count, 1);
+            this.profile.Add(new Configuration("Configuration1"));
+            Assert.That(profile.Configurations.Count, Is.EqualTo(1)); 
         }
-        
-        [TestMethod]
+
+        [Test]
         public void testName()
         {
-            Assert.AreEqual("DefaultProfile", this._cut.Name);
+            Assert.That(profile.Name, Is.EqualTo("DefaultProfile"));
         }
     }
 }
