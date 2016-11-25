@@ -26,6 +26,7 @@ namespace WPFExperiment
     {
         #region fields
 
+        // TODO Get rid of VM ref after command handlers have been moved
         private WindowViewModel vm;
 
         #endregion
@@ -35,15 +36,15 @@ namespace WPFExperiment
         public MainWindow()
         {
             InitializeComponent();
-            this.vm = new WindowViewModel();
+            this.vm = (WindowViewModel)this.DataContext;
             this.InitializeCommandBindings();
-            TabControlEditor.DataContext = this.vm.Editors;
         }
 
         #endregion
 
         #region event handlers
         
+        // TODO Get rid of command handlers in CB
         public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Profile p = new Profile("Profile#"+vm.Editors.Count);
