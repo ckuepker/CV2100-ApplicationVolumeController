@@ -1,4 +1,4 @@
-﻿<TabItem x:Class="WPFExperiment.View.Controls.EditorTabItem"
+﻿<UserControl x:Class="WPFExperiment.View.Controls.Editor"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,10 +8,15 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="200" MinWidth="200"></ColumnDefinition>
+            <ColumnDefinition Width="250" MinWidth="250"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DockPanel Name="DockPanelProfile" HorizontalAlignment="Left" Grid.Column="0">
-            <ListBox Name="lstConfigurations">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Name="EditorTitle" Text="{Binding Path=Profile.Name}" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <DockPanel Name="DockPanelProfile" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1">
+            <ListBox Name="lstConfigurations" ItemsSource="{Binding}" DataContext="{Binding Path=Profile.Configurations}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="5" BorderThickness="1" CornerRadius="4">
@@ -26,20 +31,20 @@
         <StackPanel Name="StackPanelProperties" Orientation="Vertical" Grid.Column="1" DataContext="{Binding ElementName=lstConfigurations, Path=SelectedItem}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Grid.Row="0" Grid.Column="0" TextWrapping="Wrap">Name:</TextBlock>
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}"></TextBox>
-                
+
                 <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ToolbarButton}" Content="Update"></Button>
                 <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource ToolbarButton}" Content="Delete Configuration"></Button>
             </Grid>
         </StackPanel>
     </Grid>
-</TabItem>
+</UserControl>

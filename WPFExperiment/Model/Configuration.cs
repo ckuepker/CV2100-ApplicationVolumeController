@@ -11,6 +11,12 @@ namespace WPFExperiment.Model
         private Dictionary<string, decimal> volumeMapping;
         private string _name;
 
+        public Configuration()
+        {
+            this._name = "Default";
+            this.volumeMapping = new Dictionary<string, decimal>();
+        }
+
         public Configuration(string name)
         {
             this._name = name;

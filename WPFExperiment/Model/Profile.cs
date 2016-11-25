@@ -16,6 +16,7 @@ namespace WPFExperiment.Model
         {
             this._name = name;
             this._configurations = new List<Configuration>();
+            this._configurations.Add(new Configuration());
         }
 
         public string Name

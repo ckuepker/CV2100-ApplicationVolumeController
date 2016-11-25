@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WPFExperiment.Model;
 using WPFExperiment.View.Controls;
 using System.Collections.ObjectModel;
+using WPFExperiment.ViewModel;
 
 namespace WPFExperiment
 {
@@ -25,7 +26,7 @@ namespace WPFExperiment
     {
         #region fields
 
-        private ObservableCollection<TabItem> tabs;
+        private WindowViewModel vm;
 
         #endregion
 
@@ -34,27 +35,56 @@ namespace WPFExperiment
         public MainWindow()
         {
             InitializeComponent();
+            this.vm = new WindowViewModel();
             this.InitializeCommandBindings();
-            this.tabs = new ObservableCollection<TabItem>();
-            TabControlEditor.DataContext = tabs;
+            TabControlEditor.DataContext = this.vm.Editors;
         }
 
         #endregion
 
         #region event handlers
+        // TODO Move command handling to view model
+        //public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    Profile p = new Profile("Profile#" + tabs.Count);
+        //    p.Add(new Configuration("Config1"));
+        //    p.Add(new Configuration("Config2"));
+        //    EditorTabItem editingTab = new EditorTabItem(p);
+        //    tabs.Add(editingTab);
+        //    if (tabs.Count == 1)
+        //    {
+        //        txtWelcome.Visibility = Visibility.Collapsed;
+        //        TabControlEditor.Visibility = Visibility.Visible;
+        //    }
+        //    TabControlEditor.SelectedIndex = tabs.Count - 1;
+        //}
+
+        //public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        //{
+        //    Profile p = new Profile("Profile#" + vm.Profiles.Count);
+        //    p.Add(new Configuration("Config1"));
+        //    p.Add(new Configuration("Config2"));
+        //    //vm.Profiles.Add(p);
+        //    editors.Add(new EditorViewModel(p));
+        //    if (editors.Count == 1)
+        //    {
+        //        txtWelcome.Visibility = Visibility.Collapsed;
+        //        TabControlEditor.Visibility = Visibility.Visible;
+        //    }
+        //    TabControlEditor.SelectedIndex = vm.Profiles.Count - 1;
+        //}
+
         public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            Profile p = new Profile("Profile#" + tabs.Count);
-            p.Add(new Configuration("Config1"));
-            p.Add(new Configuration("Config2"));
-            EditorTabItem editingTab = new EditorTabItem(p);
-            tabs.Add(editingTab);
-            if (tabs.Count == 1)
+            Profile p = new Profile("Profile#"+vm.Editors.Count);
+            EditorViewModel evm = new EditorViewModel(p);
+            vm.Editors.Add(evm);
+            if (this.vm.Editors.Count == 1)
             {
                 txtWelcome.Visibility = Visibility.Collapsed;
                 TabControlEditor.Visibility = Visibility.Visible;
             }
-            TabControlEditor.SelectedIndex = tabs.Count - 1;
+            TabControlEditor.SelectedIndex = vm.Editors.Count - 1;
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)

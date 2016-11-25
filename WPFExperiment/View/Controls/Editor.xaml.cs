@@ -12,39 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFExperiment.ViewModel;
 using WPFExperiment.Model;
 
 namespace WPFExperiment.View.Controls
 {
     /// <summary>
-    /// Interaction logic for EditorTab.xaml
+    /// Interaction logic for Editor.xaml
     /// </summary>
-    public partial class EditorTabItem : TabItem
+    public partial class Editor : UserControl
     {
 
-        #region fields
-
-        private Profile profile;
-
-        #endregion
-
-        #region properties
-
-        public Profile Profile
-        {
-            get { return profile; }
-            set { profile = value; }
-        }
-
-        #endregion
-
-
-        public EditorTabItem(Profile p)
+        public Editor()
         {
             InitializeComponent();
-            this.Header = p.Name;
-            this.profile = p;
-            lstConfigurations.ItemsSource = p.Configurations;
         }
     }
 }
