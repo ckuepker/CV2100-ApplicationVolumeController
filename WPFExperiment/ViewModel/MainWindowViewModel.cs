@@ -9,7 +9,7 @@ using WPFExperiment.Model;
 
 namespace WPFExperiment.ViewModel
 {
-    public class WindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
         private ObservableCollection<EditorViewModel> editors;
 
@@ -19,7 +19,7 @@ namespace WPFExperiment.ViewModel
             set { editors = value; }
         }
 
-        public WindowViewModel()
+        public MainWindowViewModel()
         {
             this.editors = new ObservableCollection<EditorViewModel>();
         }

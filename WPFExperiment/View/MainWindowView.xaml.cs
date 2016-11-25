@@ -27,7 +27,7 @@ namespace WPFExperiment
         #region fields
 
         // TODO Get rid of VM ref after command handlers have been moved
-        private WindowViewModel vm;
+        private MainWindowViewModel vm;
 
         #endregion
 
@@ -36,7 +36,7 @@ namespace WPFExperiment
         public MainWindowView()
         {
             InitializeComponent();
-            this.vm = (WindowViewModel)this.DataContext;
+            this.vm = (MainWindowViewModel)this.DataContext;
             this.InitializeCommandBindings();
         }
 

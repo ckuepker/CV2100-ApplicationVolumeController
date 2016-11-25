@@ -9,7 +9,7 @@
         <CommandBinding Command="cmd:ApplicationCommands.Exit" Executed="CommandBinding_Executed"></CommandBinding>
     </Window.CommandBindings>
     <Window.DataContext>
-        <vm:WindowViewModel></vm:WindowViewModel>
+        <vm:MainWindowViewModel></vm:MainWindowViewModel>
     </Window.DataContext>
     <StackPanel Name="StackPanelMain" Orientation="Vertical">
         <StackPanel Name="StackPanelMenu" Orientation="Horizontal">
