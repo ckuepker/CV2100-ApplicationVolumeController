@@ -4,7 +4,8 @@
         xmlns:cmd="clr-namespace:WPFExperiment.ViewModel.Commands"
         xmlns:c="clr-namespace:WPFExperiment.View.Controls"
         xmlns:vm="clr-namespace:WPFExperiment.ViewModel"
-        Title="WPFE MainWindow">
+        Title="WPFE MainWindow"
+        Name="main">
     <Window.DataContext>
         <vm:MainWindowViewModel></vm:MainWindowViewModel>
     </Window.DataContext>
@@ -32,8 +33,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox Name="txtWelcome" Text="Welcome" Visibility="Collapsed"></TextBox>
-            <TabControl Name="TabControlEditor" Visibility="Visible" ItemsSource="{Binding}" DataContext="{Binding Path=Editors}">
+            <TextBox Name="txtWelcome" Text="Welcome" Visibility="Visible"></TextBox>
+            <TabControl Name="TabControlEditor" Visibility="Visible" SelectedIndex="{Binding ElementName=main, Path=DataContext.ActiveEditor, Mode=TwoWay}"  ItemsSource="{Binding}" DataContext="{Binding Path=Editors}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Path=Profile.Name}"></TextBlock>

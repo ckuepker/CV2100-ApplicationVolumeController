@@ -14,6 +14,25 @@ namespace WPFExperiment.ViewModel
     public class MainWindowViewModel : ViewModelBase
     {
         private ObservableCollection<EditorViewModel> editors;
+        private Boolean editing = false;
+        private int activeEditor = -1;
+
+        public int ActiveEditor
+        {
+            get { return activeEditor; }
+            set
+            {
+                activeEditor = value;
+                Console.WriteLine("ActiveEditor=" + value);
+                NotifyPropertyChanged("ActiveEditor");
+            }
+        }
+
+        public Boolean IsEditing
+        {
+            get { return editing; }
+            set { editing = value; }
+        }
 
         public ObservableCollection<EditorViewModel> Editors
         {
@@ -49,13 +68,14 @@ namespace WPFExperiment.ViewModel
             Profile p = new Profile("Profile#" + editors.Count);
             EditorViewModel evm = new EditorViewModel(p);
             editors.Add(evm);
+            editing = true;
+            ActiveEditor = editors.Count - 1;
             // TODO Handle with trigger
             //if (editors.Count == 1)
             //{
-                //txtWelcome.Visibility = Visibility.Collapsed;
-                //TabControlEditor.Visibility = Visibility.Visible;
+            //txtWelcome.Visibility = Visibility.Collapsed;
+            //TabControlEditor.Visibility = Visibility.Visible;
             //}
-            //TabControlEditor.SelectedIndex = vm.Editors.Count - 1;
         }
 
         public bool Default_CanExecute(object o)
