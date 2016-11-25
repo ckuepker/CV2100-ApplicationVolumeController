@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <TextBlock Name="EditorTitle" Text="{Binding Path=Profile.Name}" Grid.Row="0" Grid.Column="0"></TextBlock>
         <DockPanel Name="DockPanelProfile" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1">
-            <ListBox Name="lstConfigurations" ItemsSource="{Binding}" DataContext="{Binding Path=Profile.Configurations}">
+            <ListBox Name="lstConfigurations" ItemsSource="{Binding}" DataContext="{Binding Path=Configurations}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Margin="5" BorderThickness="1" CornerRadius="4">
