@@ -5,9 +5,6 @@
         xmlns:c="clr-namespace:WPFExperiment.View.Controls"
         xmlns:vm="clr-namespace:WPFExperiment.ViewModel"
         Title="WPFE MainWindow">
-    <Window.CommandBindings>
-        <CommandBinding Command="cmd:ApplicationCommands.Exit" Executed="CommandBinding_Executed"></CommandBinding>
-    </Window.CommandBindings>
     <Window.DataContext>
         <vm:MainWindowViewModel></vm:MainWindowViewModel>
     </Window.DataContext>
@@ -15,8 +12,8 @@
         <StackPanel Name="StackPanelMenu" Orientation="Horizontal">
             <Menu Name="MenuMain" Height="auto">
                 <MenuItem Name="MenuItemFile" Header="File">
-                    <MenuItem Name="MenuItemFileNew" Header="New Profile" Command="New"></MenuItem>
-                    <MenuItem Name="MenuItemExit" Header="Exit" Command="cmd:ApplicationCommands.Exit"></MenuItem>
+                    <MenuItem Name="MenuItemFileNew" Header="New Profile" Command="{Binding NewCommand}"></MenuItem>
+                    <MenuItem Name="MenuItemExit" Header="Exit" Command="{Binding ExitCommand}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Edit"></MenuItem>
                 <MenuItem Header="Tools"></MenuItem>
@@ -24,9 +21,9 @@
             </Menu>
         </StackPanel>
         <WrapPanel Orientation="Horizontal" Name="WrapPanelToolbar">
-            <Button Name="ToolbarButtonNew" Content="New" Command="New" Style="{StaticResource ToolbarButton}"></Button>
+            <Button Name="ToolbarButtonNew" Content="New" Command="{Binding NewCommand}" Style="{StaticResource ToolbarButton}"></Button>
             <Button Name="ToolbarButtonAdd" Content="Add" Style="{StaticResource ToolbarButton}" Visibility="Collapsed"></Button>
-            <Button Name="ToolbarButtonExit" Content="Exit" Command="cmd:ApplicationCommands.Exit" Style="{StaticResource ToolbarButton}"></Button>
+            <Button Name="ToolbarButtonExit" Content="Exit" Command="{Binding ExitCommand}" Style="{StaticResource ToolbarButton}"></Button>
         </WrapPanel>
         <Grid Name="EditorGrid">
             <Grid.RowDefinitions>
@@ -35,8 +32,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox Name="txtWelcome" Text="Welcome"></TextBox>
-            <TabControl Name="TabControlEditor" Visibility="Collapsed" ItemsSource="{Binding}" DataContext="{Binding Path=Editors}">
+            <TextBox Name="txtWelcome" Text="Welcome" Visibility="Collapsed"></TextBox>
+            <TabControl Name="TabControlEditor" Visibility="Visible" ItemsSource="{Binding}" DataContext="{Binding Path=Editors}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Path=Profile.Name}"></TextBlock>
