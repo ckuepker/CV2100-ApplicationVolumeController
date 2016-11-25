@@ -43,37 +43,7 @@ namespace WPFExperiment
         #endregion
 
         #region event handlers
-        // TODO Move command handling to view model
-        //public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        //{
-        //    Profile p = new Profile("Profile#" + tabs.Count);
-        //    p.Add(new Configuration("Config1"));
-        //    p.Add(new Configuration("Config2"));
-        //    EditorTabItem editingTab = new EditorTabItem(p);
-        //    tabs.Add(editingTab);
-        //    if (tabs.Count == 1)
-        //    {
-        //        txtWelcome.Visibility = Visibility.Collapsed;
-        //        TabControlEditor.Visibility = Visibility.Visible;
-        //    }
-        //    TabControlEditor.SelectedIndex = tabs.Count - 1;
-        //}
-
-        //public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        //{
-        //    Profile p = new Profile("Profile#" + vm.Profiles.Count);
-        //    p.Add(new Configuration("Config1"));
-        //    p.Add(new Configuration("Config2"));
-        //    //vm.Profiles.Add(p);
-        //    editors.Add(new EditorViewModel(p));
-        //    if (editors.Count == 1)
-        //    {
-        //        txtWelcome.Visibility = Visibility.Collapsed;
-        //        TabControlEditor.Visibility = Visibility.Visible;
-        //    }
-        //    TabControlEditor.SelectedIndex = vm.Profiles.Count - 1;
-        //}
-
+        
         public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             Profile p = new Profile("Profile#"+vm.Editors.Count);

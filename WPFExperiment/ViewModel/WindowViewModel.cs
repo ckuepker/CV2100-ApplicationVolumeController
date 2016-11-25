@@ -24,12 +24,5 @@ namespace WPFExperiment.ViewModel
             this.editors = new ObservableCollection<EditorViewModel>();
         }
 
-        //public void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
-        //{
-        //    var p = new Profile("Profile#"+editors.Count);
-        //    p.Add(new Configuration());
-        //    editors.Add(new EditorViewModel(p));
-        //}
-
     }
 }
