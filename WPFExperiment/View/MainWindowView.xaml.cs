@@ -22,7 +22,7 @@ namespace WPFExperiment
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindowView : Window
     {
         #region fields
 
@@ -31,9 +31,9 @@ namespace WPFExperiment
 
         #endregion
 
-        #region constructors
+        #region constructors        
 
-        public MainWindow()
+        public MainWindowView()
         {
             InitializeComponent();
             this.vm = (WindowViewModel)this.DataContext;

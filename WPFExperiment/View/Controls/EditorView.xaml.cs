@@ -20,10 +20,10 @@ namespace WPFExperiment.View.Controls
     /// <summary>
     /// Interaction logic for Editor.xaml
     /// </summary>
-    public partial class Editor : UserControl
+    public partial class EditorView : UserControl
     {
 
-        public Editor()
+        public EditorView()
         {
             InitializeComponent();
         }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPFExperiment.MainWindow"
+﻿<Window x:Class="WPFExperiment.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cmd="clr-namespace:WPFExperiment.ViewModel.Commands"
@@ -44,7 +44,7 @@
                 </TabControl.ItemTemplate>
                 <TabControl.ContentTemplate>
                     <DataTemplate>
-                        <c:Editor></c:Editor>
+                        <c:EditorView></c:EditorView>
                     </DataTemplate>
                 </TabControl.ContentTemplate>
             </TabControl>
